@@ -1,7 +1,6 @@
 # Rclone OneDrive Sync Docker Container
 
 ![Build Status](https://github.com/Oksii/rclone-sync/actions/workflows/docker-build.yml/badge.svg)
-![Docker Pulls](https://img.shields.io/docker/pulls/ghcr.io/oksii/rclone-sync)
 ![Last Updated](https://img.shields.io/badge/last%20updated-2025--02--15-blue)
 
 A Docker container that automatically syncs a local directory with OneDrive using rclone. Supports both scheduled sync intervals and immediate sync on file changes.
@@ -113,7 +112,6 @@ rclone authorize "onedrive"
 ## Docker Compose Example
 
 ```yaml
-version: '3.8'
 services:
   rclone-sync:
     image: ghcr.io/oksii/rclone-sync:latest
@@ -148,29 +146,3 @@ docker build -t rclone-sync .
 # Build for specific platform
 docker buildx build --platform linux/arm64 -t rclone-sync .
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [rclone](https://rclone.org/) for the amazing sync tool
-- [Docker](https://www.docker.com/) for containerization
-- [GitHub Actions](https://github.com/features/actions) for CI/CD
-
-## Support
-
-If you encounter any issues or have questions, please [open an issue](https://github.com/Oksii/rclone-sync/issues/new).
-
----
-Created by [Oksii](https://github.com/Oksii)  
-Last Updated: 2025-02-15 17:25:17 UTC
