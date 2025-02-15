@@ -67,16 +67,48 @@ Set `SYNC_INTERVAL="watch"` for immediate sync on file changes.
 2. Get your Client ID and Client Secret
 3. Provide them as environment variables
 
-### Option 2: Token-based
-1. Generate token using rclone:
+### Option 2: Manual Token Generation
+
+1. On a machine with a browser, install rclone:
+```bash
+curl https://rclone.org/install.sh | sudo bash
+```
+
+2. Create a temporary rclone config:
+```bash
+rclone config
+# Choose 'n' for new remote
+# Name: onedrive
+# Storage: Microsoft OneDrive
+# Enter your client_id
+# Enter your client_secret
+# Choose 'n' for advanced config
+```
+
+3. Copy the generated config:
+```bash
+cat ~/.config/rclone/rclone.conf | base64 -w 0
+```
+
+4. Use this base64 encoded string as your TOKEN environment variable
+
+### Option 3: SSH Tunnel Method
+
+If you have SSH access to your headless server:
+
+1. Create an SSH tunnel:
+```bash
+ssh -L 53682:localhost:53682 username@your-server
+```
+
+2. On the server, run:
 ```bash
 rclone authorize "onedrive"
 ```
-2. Base64 encode the token:
-```bash
-base64 -w 0 token.json > token.b64
-```
-3. Provide the encoded token as `TOKEN` environment variable
+
+3. The browser will open locally through the SSH tunnel
+4. Complete the authentication
+5. The token will be saved on the server
 
 ## Docker Compose Example
 
